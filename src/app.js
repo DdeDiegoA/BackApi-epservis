@@ -4,6 +4,7 @@ import companyRoutes from "./routes/company.routes.js";
 import planRoutes from "./routes/plan.routes.js";
 import clientRoutes from "./routes/client.routes.js";
 
+//* settings
 const app = express();
 
 //* middlewares
