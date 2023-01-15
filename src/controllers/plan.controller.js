@@ -76,6 +76,11 @@ export const getClientPlan = async (req, res) => {
                 planPlanId: planId,
             },
         });
+        // Todo: validate is empty
+        // if (planClient= is)
+        //     return res.status(401).json({
+        //         message: `el plan con id ${planId} no existe`,
+        //     });
         res.json(planClient);
     } catch (error) {
         return res.status(404).json({ message: error.message });
