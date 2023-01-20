@@ -1,5 +1,11 @@
 import { Company } from "../models/company.model.js";
 
+/**
+ * It's a function that returns a promise that resolves to an array of companies.
+ * @param req - The request object.
+ * @param res - The response object.
+ * @returns An array of companies.
+ */
 export const getCompanies = async (req, res) => {
     try {
         const companies = await Company.findAll();
@@ -9,6 +15,12 @@ export const getCompanies = async (req, res) => {
     }
 };
 
+/**
+ * It creates a new company in the database.
+ * @param req - request
+ * @param res - {
+ * @returns a promise.
+ */
 export const createCompany = async (req, res) => {
     try {
         const { business_name, nit } = req.body;
@@ -25,6 +37,13 @@ export const createCompany = async (req, res) => {
     }
 };
 
+/**
+ * It takes the id of the company to update, finds the company in the database, updates the company
+ * with the new data, and returns the updated company.
+ * @param req - the request object
+ * @param res - the response object
+ * @returns The companyToUpdate object is being returned.
+ */
 export const updateCompany = async (req, res) => {
     try {
         const idCompany = req.params.id;
@@ -39,6 +58,12 @@ export const updateCompany = async (req, res) => {
     }
 };
 
+/**
+ * It deletes a company from the database.
+ * @param req - request
+ * @param res - the response object
+ * @returns The company is being deleted from the database.
+ */
 export const deleteCompany = async (req, res) => {
     try {
         const idCompany = req.params.id;
@@ -53,6 +78,12 @@ export const deleteCompany = async (req, res) => {
     }
 };
 
+/**
+ * It gets a company by its id.
+ * @param req - The request object.
+ * @param res - The response object.
+ * @returns The company object.
+ */
 export const getCompanyById = async (req, res) => {
     try {
         const idCompany = req.params.id;

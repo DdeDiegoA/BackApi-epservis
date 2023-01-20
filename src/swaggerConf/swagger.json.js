@@ -13,6 +13,10 @@ export const swaggerJson = {
     basePath: "/",
     tags: [
         {
+            name: "User",
+            description: "users for the system",
+        },
+        {
             name: "Client",
             description: "Api for clients in the system",
         },
@@ -38,6 +42,15 @@ export const swaggerJson = {
                 tags: ["Client"],
                 summary: "Obtener todos los clientes",
                 description: "Devuelve una lista de todos los clientes",
+                parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                ],
                 responses: {
                     200: {
                         description: "Lista de clientes obtenida exitosamente",
@@ -59,6 +72,13 @@ export const swaggerJson = {
                 description:
                     "Crea un nuevo cliente con los datos proporcionados",
                 parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                     {
                         name: "body",
                         in: "body",
@@ -84,6 +104,13 @@ export const swaggerJson = {
                 summary: "Obtener un cliente por ID",
                 description: "Devuelve un cliente específico según su ID",
                 parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                     {
                         name: "id",
                         in: "path",
@@ -112,6 +139,13 @@ export const swaggerJson = {
                 description:
                     "Actualiza un cliente con los datos proporcionados",
                 parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                     {
                         name: "id",
                         in: "path",
@@ -147,6 +181,13 @@ export const swaggerJson = {
                         require: true,
                         type: "integer",
                     },
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                 ],
                 responses: {
                     204: {
@@ -158,11 +199,299 @@ export const swaggerJson = {
                 },
             },
         },
+        "/client-data": {
+            get: {
+                tags: ["Client"],
+                summary:
+                    "Obtener todos los clientes con sus datos de plan y empresa",
+                description:
+                    "Devuelve una lista de todos los clientes con sus datos de plan y empresa",
+                parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                ],
+                responses: {
+                    200: {
+                        description: "Lista de clientes obtenida exitosamente",
+                        schema: {
+                            type: "array",
+                            items: {
+                                $ref: "#/definitions/ClientAllData",
+                            },
+                        },
+                    },
+                    500: {
+                        description: "Error al obtener la lista de clientes",
+                    },
+                },
+            },
+        },
+        "/client-data/{id}": {
+            get: {
+                tags: ["Client"],
+                summary: "Obtener todos los datos de un cliente por ID",
+                description:
+                    "Devuelve todos los datos de un cliente específico según su ID",
+                parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                    {
+                        name: "id",
+                        in: "path",
+                        required: true,
+                        type: "integer",
+                    },
+                ],
+                responses: {
+                    200: {
+                        description: "Datos del cliente obtenidos exitosamente",
+                        schema: {
+                            $ref: "#/definitions/ClientAllData",
+                        },
+                    },
+                    404: {
+                        description:
+                            "El cliente con el ID especificado no existe",
+                    },
+                    500: {
+                        description: "Error al obtener los datos del cliente",
+                    },
+                },
+            },
+        },
+        "/user": {
+            get: {
+                tags: ["User"],
+                summary: "Obtener todos los usuarios",
+                description: "Devuelve una lista de todos los usuarios",
+
+                parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                ],
+                responses: {
+                    200: {
+                        description: "Lista de usuarios obtenida exitosamente",
+                        schema: {
+                            type: "array",
+                            items: {
+                                $ref: "#/definitions/User",
+                            },
+                        },
+                    },
+                    500: {
+                        description: "Error al obtener la lista de usuarios",
+                    },
+                },
+            },
+        },
+        "/user/{id}": {
+            get: {
+                tags: ["User"],
+                summary: "Obtener un usuario por ID",
+                description: "Devuelve un usuario específico según su ID",
+                parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                    {
+                        name: "id",
+                        in: "path",
+                        required: true,
+                        type: "integer",
+                    },
+                ],
+                responses: {
+                    200: {
+                        description: "Usuario obtenido exitosamente",
+                        schema: {
+                            $ref: "#/definitions/User",
+                        },
+                    },
+                    404: {
+                        description: "El usuario no existe",
+                    },
+                    500: {
+                        description: "Error al obtener el usuario",
+                    },
+                },
+            },
+            put: {
+                tags: ["User"],
+                summary: "Actualizar un usuario",
+                description: "Actualiza un usuario según su ID",
+                parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                    {
+                        name: "id",
+                        in: "path",
+                        required: true,
+                        type: "integer",
+                    },
+                    {
+                        name: "body",
+                        in: "body",
+                        required: true,
+                        schema: {
+                            $ref: "#/definitions/UpdateUser",
+                        },
+                    },
+                ],
+                responses: {
+                    200: {
+                        description: "Usuario actualizado exitosamente",
+                    },
+                    400: {
+                        description: "Error al actualizar el usuario",
+                    },
+                },
+            },
+            delete: {
+                tags: ["User"],
+                summary: "Eliminar un usuario",
+                description: "Elimina un usuario según su ID",
+                parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                    {
+                        name: "id",
+                        in: "path",
+                        required: true,
+                        type: "integer",
+                    },
+                ],
+                responses: {
+                    204: {
+                        description: "Usuario eliminado exitosamente",
+                    },
+                    400: {
+                        description: "Error al eliminar el usuario",
+                    },
+                },
+            },
+        },
+        "/register": {
+            post: {
+                tags: ["User"],
+                summary: "Crear un nuevo usuario",
+                description:
+                    "Crea un nuevo usuario con los datos proporcionados",
+                parameters: [
+                    {
+                        name: "body",
+                        in: "body",
+                        required: true,
+                        schema: {
+                            $ref: "#/definitions/NewUser",
+                        },
+                    },
+                ],
+                responses: {
+                    201: {
+                        description: "Usuario creado exitosamente",
+                    },
+                    400: {
+                        description: "Error al crear el usuario",
+                    },
+                },
+            },
+        },
+        "/login": {
+            post: {
+                tags: ["User"],
+                summary: "Iniciar sesión de usuario",
+                description:
+                    "Inicia sesión de un usuario con su correo electrónico y contraseña",
+                parameters: [
+                    {
+                        name: "body",
+                        in: "body",
+                        required: true,
+                        schema: {
+                            type: "object",
+                            properties: {
+                                email: {
+                                    type: "string",
+                                },
+                                password: {
+                                    type: "string",
+                                },
+                            },
+                            required: ["email", "password"],
+                        },
+                    },
+                ],
+                responses: {
+                    200: {
+                        description: "Sesión iniciada exitosamente",
+                        schema: {
+                            type: "object",
+                            properties: {
+                                body: {
+                                    $ref: "#/definitions/User",
+                                },
+                                tokenSession: {
+                                    type: "string",
+                                },
+                            },
+                        },
+                    },
+                    404: {
+                        description: "El usuario no existe",
+                    },
+                    409: {
+                        description: "Contraseña inválida",
+                    },
+                    400: {
+                        description: "Error al iniciar sesión",
+                    },
+                },
+            },
+        },
         "/plan": {
             get: {
                 tags: ["Plans"],
                 summary: "Obtener todos los planes",
                 description: "Devuelve una lista de todos los planes",
+                parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                ],
                 responses: {
                     200: {
                         description: "Lista de planes obtenida exitosamente",
@@ -183,6 +512,13 @@ export const swaggerJson = {
                 summary: "Crear un nuevo plan",
                 description: "Crea un nuevo plan con los datos proporcionados",
                 parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                     {
                         name: "body",
                         in: "body",
@@ -208,6 +544,13 @@ export const swaggerJson = {
                 summary: "Obtener un plan por ID",
                 description: "Devuelve un plan específico según su ID",
                 parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                     {
                         name: "id",
                         in: "path",
@@ -236,6 +579,13 @@ export const swaggerJson = {
                 description:
                     "Actualiza un plan específico según su ID con los datos proporcionados",
                 parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                     {
                         name: "id",
                         in: "path",
@@ -266,6 +616,13 @@ export const swaggerJson = {
                 description: "Elimina un plan específico según su ID",
                 parameters: [
                     {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                    {
                         name: "id",
                         in: "path",
                         required: true,
@@ -289,6 +646,13 @@ export const swaggerJson = {
                 description:
                     "Devuelve una lista de clientes de un plan específico según su ID",
                 parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                     {
                         name: "id",
                         in: "path",
@@ -318,6 +682,15 @@ export const swaggerJson = {
                 summary: "Obtener todas las empresas",
                 description:
                     "Devuelve una lista de todas las empresas registradas",
+                parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                ],
                 responses: {
                     200: {
                         description: "Empresas obtenidas exitosamente",
@@ -339,6 +712,13 @@ export const swaggerJson = {
                 description:
                     "Crea una nueva empresa con los datos proporcionados",
                 parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                     {
                         name: "body",
                         in: "body",
@@ -364,6 +744,13 @@ export const swaggerJson = {
                 summary: "Obtener empresa por ID",
                 description: "Devuelve una empresa específica según su ID",
                 parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                     {
                         name: "id",
                         in: "path",
@@ -394,6 +781,13 @@ export const swaggerJson = {
                     "Actualiza una empresa específica según su ID con los datos proporcionados",
                 parameters: [
                     {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                    {
                         name: "id",
                         in: "path",
                         required: true,
@@ -423,6 +817,13 @@ export const swaggerJson = {
                 description: "Elimina una empresa específica según su ID",
                 parameters: [
                     {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                    {
                         name: "id",
                         in: "path",
                         required: true,
@@ -444,6 +845,15 @@ export const swaggerJson = {
                 tags: ["Level"],
                 summary: "Obtener todos los niveles",
                 description: "Retorna una lista de todos los niveles",
+                parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                ],
                 responses: {
                     200: {
                         description: "Lista de niveles",
@@ -462,6 +872,13 @@ export const swaggerJson = {
                 summary: "Crear un nuevo nivel",
                 description: "Crea un nuevo nivel con los datos proporcionados",
                 parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                     {
                         name: "level",
                         in: "body",
@@ -486,6 +903,13 @@ export const swaggerJson = {
                 summary: "Actualizar un nivel por ID",
                 description: "Actualiza un nivel específico según su ID",
                 parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                     {
                         name: "id",
                         in: "path",
@@ -515,6 +939,13 @@ export const swaggerJson = {
                 description: "Retorna un nivel específico según su ID",
                 parameters: [
                     {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
+                    {
                         name: "id",
                         in: "path",
                         required: true,
@@ -536,6 +967,13 @@ export const swaggerJson = {
                 summary: "Eliminar un nivel por ID",
                 description: "Elimina un nivel específico según su ID",
                 parameters: [
+                    {
+                        name: "authorization",
+                        in: "header",
+                        required: true,
+                        type: "string",
+                        description: "Bearer token",
+                    },
                     {
                         name: "id",
                         in: "path",
@@ -583,6 +1021,36 @@ export const swaggerJson = {
                 companyCompanyId: { type: "integer" },
             },
         },
+        User: {
+            type: "object",
+            properties: {
+                id: { type: "integer" },
+                fullName: { type: "string" },
+                email: { type: "string" },
+                role: { type: "string" },
+                password: { type: "string" },
+            },
+            required: ["id", "fullName", "email", "role", "password"],
+        },
+        UpdateUser: {
+            type: "object",
+            properties: {
+                fullName: { type: "string" },
+                email: { type: "string" },
+                role: { type: "string" },
+                password: { type: "string" },
+            },
+        },
+        NewUser: {
+            type: "object",
+            properties: {
+                fullName: { type: "string" },
+                email: { type: "string" },
+                role: { type: "string" },
+                password: { type: "string" },
+            },
+            required: ["fullName", "email", "role", "password"],
+        },
         UpdateClient: {
             type: "object",
             properties: {
@@ -591,6 +1059,29 @@ export const swaggerJson = {
                 phone: { type: "string" },
                 planPlanId: { type: "integer" },
                 companyCompanyId: { type: "integer" },
+            },
+        },
+        ClientAllData: {
+            type: "object",
+            properties: {
+                id: { type: "integer" },
+                fullName: { type: "string" },
+                email: { type: "string" },
+                phone: { type: "string" },
+                plan: {
+                    type: "object",
+                    properties: {
+                        description: { type: "string" },
+                        cost: { type: "string" },
+                    },
+                },
+                company: {
+                    type: "object",
+                    properties: {
+                        business_name: { type: "string" },
+                        nit: { type: "string" },
+                    },
+                },
             },
         },
         Plan: {

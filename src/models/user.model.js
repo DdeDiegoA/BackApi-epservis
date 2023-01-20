@@ -2,8 +2,8 @@ import { DataTypes } from "sequelize";
 import sequelize from "../database/database.js";
 
 /* Creating a table in the database. */
-export const Client = sequelize.define("client", {
-    client_id: {
+export const User = sequelize.define("user", {
+    user_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
@@ -16,7 +16,12 @@ export const Client = sequelize.define("client", {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    phone: {
+    role: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        default: "user",
+    },
+    password: {
         type: DataTypes.STRING,
         allowNull: false,
     },

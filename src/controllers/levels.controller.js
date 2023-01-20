@@ -2,6 +2,12 @@
 import { Level } from "../models/level.model.js";
 
 //* controllers
+/**
+ * It gets all the levels from the database and returns them as a JSON object.
+ * @param req - The request object.
+ * @param res - the response object
+ * @returns An array of objects.
+ */
 export const getLevels = async (req, res) => {
     try {
         const levels = await Level.findAll();
@@ -11,6 +17,12 @@ export const getLevels = async (req, res) => {
     }
 };
 
+/**
+ * It creates a new level in the database.
+ * @param req - request
+ * @param res - {
+ * @returns The response is a JSON object with the message and the body.
+ */
 export const createLevel = async (req, res) => {
     try {
         const { level_type } = req.body;
@@ -30,6 +42,12 @@ export const createLevel = async (req, res) => {
     }
 };
 
+/**
+ * It takes the id of the level to update, and the new level_type, and updates the level_type of the
+ * level with the given id.
+ * @param req - the request object
+ * @param res - the response object
+ */
 export const updateLevel = async (req, res) => {
     try {
         const idLevel = req.params.id;
@@ -45,6 +63,12 @@ export const updateLevel = async (req, res) => {
     }
 };
 
+/**
+ * It deletes a level from the database.
+ * @param req - request
+ * @param res - the response object
+ * @returns The deletedLevel is being returned.
+ */
 export const deleteLevel = async (req, res) => {
     try {
         const idLevel = req.params.id;
@@ -59,6 +83,12 @@ export const deleteLevel = async (req, res) => {
     }
 };
 
+/**
+ * It gets a level by its id.
+ * @param req - The request object.
+ * @param res - the response object
+ * @returns The level object.
+ */
 export const getLevelById = async (req, res) => {
     try {
         const idLevel = req.params.id;

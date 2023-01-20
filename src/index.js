@@ -6,6 +6,10 @@ dotenv.config();
 
 const PORT = process.env.PORT || 4000;
 
+/**
+ * * The main function is an async function that will try to sync the database, and if it succeeds, it
+ * * will start the server and listen on the port specified in the PORT variable.
+ */
 async function main() {
     try {
         await sequelize.sync({ force: false });
