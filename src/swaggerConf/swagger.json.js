@@ -14,7 +14,7 @@ export const swaggerJson = {
     tags: [
         {
             name: "User",
-            description: "users for the system",
+            description: "The users that will use the system",
         },
         {
             name: "Client",
@@ -40,8 +40,8 @@ export const swaggerJson = {
         "/client": {
             get: {
                 tags: ["Client"],
-                summary: "Obtener todos los clientes",
-                description: "Devuelve una lista de todos los clientes",
+                summary: "get the only the all client",
+                description: "Return a list of the all clients in the system",
                 parameters: [
                     {
                         name: "authorization",
@@ -53,7 +53,7 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Lista de clientes obtenida exitosamente",
+                        description: "Customer List Succesfully Obtained",
                         schema: {
                             type: "array",
                             items: {
@@ -62,15 +62,14 @@ export const swaggerJson = {
                         },
                     },
                     500: {
-                        description: "Error al obtener la lista de clientes",
+                        description: "Error getting customer list",
                     },
                 },
             },
             post: {
                 tags: ["Client"],
-                summary: "Crear un nuevo cliente",
-                description:
-                    "Crea un nuevo cliente con los datos proporcionados",
+                summary: "Create a new client",
+                description: "Create a new customer with the data provided",
                 parameters: [
                     {
                         name: "authorization",
@@ -90,10 +89,10 @@ export const swaggerJson = {
                 ],
                 responses: {
                     201: {
-                        description: "Cliente creado exitosamente",
+                        description: "Client created successfully",
                     },
                     400: {
-                        description: "Error al crear el cliente",
+                        description: "Error creating client",
                     },
                 },
             },
@@ -101,8 +100,8 @@ export const swaggerJson = {
         "/client/{id}": {
             get: {
                 tags: ["Client"],
-                summary: "Obtener un cliente por ID",
-                description: "Devuelve un cliente específico según su ID",
+                summary: "Get a customer by ID",
+                description: "Returns a specific customer based on their ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -120,24 +119,23 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Cliente obtenido exitosamente",
+                        description: "Client successfully obtained",
                         schema: {
                             $ref: "#/definitions/Client",
                         },
                     },
                     404: {
-                        description: "El cliente no existe",
+                        description: "The client does not exist",
                     },
                     500: {
-                        description: "Error al obtener el cliente",
+                        description: "Error getting client",
                     },
                 },
             },
             put: {
                 tags: ["Client"],
-                summary: "Actualizar un cliente",
-                description:
-                    "Actualiza un cliente con los datos proporcionados",
+                summary: "Update a client",
+                description: "Edit a specific customer based on their ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -163,17 +161,17 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Cliente actualizado exitosamente",
+                        description: "Client Updated succesfully",
                     },
                     400: {
-                        description: "Error al actualizar el cliente",
+                        description: "Error updatting client",
                     },
                 },
             },
             delete: {
                 tags: ["Client"],
-                summary: "Eliminar un cliente",
-                description: "Elimina un cliente según su ID",
+                summary: "Delete a client",
+                description: "Delete a specific customer based on their ID",
                 parameters: [
                     {
                         name: "id",
@@ -191,10 +189,10 @@ export const swaggerJson = {
                 ],
                 responses: {
                     204: {
-                        description: "Cliente eliminado exitosamente",
+                        description: "Client deleted succesfully",
                     },
                     401: {
-                        description: "Error al eliminar cliente",
+                        description: "Error deletting client",
                     },
                 },
             },
@@ -202,10 +200,9 @@ export const swaggerJson = {
         "/client-data": {
             get: {
                 tags: ["Client"],
-                summary:
-                    "Obtener todos los clientes con sus datos de plan y empresa",
+                summary: "Get all customers with their plan and company data",
                 description:
-                    "Devuelve una lista de todos los clientes con sus datos de plan y empresa",
+                    "Returns a list of all customers with their plan and company data",
                 parameters: [
                     {
                         name: "authorization",
@@ -217,7 +214,7 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Lista de clientes obtenida exitosamente",
+                        description: "Customer List Successfully Obtained",
                         schema: {
                             type: "array",
                             items: {
@@ -226,7 +223,7 @@ export const swaggerJson = {
                         },
                     },
                     500: {
-                        description: "Error al obtener la lista de clientes",
+                        description: "Error getting customer list",
                     },
                 },
             },
@@ -234,9 +231,9 @@ export const swaggerJson = {
         "/client-data/{id}": {
             get: {
                 tags: ["Client"],
-                summary: "Obtener todos los datos de un cliente por ID",
+                summary: "Get all data of a customer by ID",
                 description:
-                    "Devuelve todos los datos de un cliente específico según su ID",
+                    "Returns all data for a specific customer based on their ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -254,17 +251,17 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Datos del cliente obtenidos exitosamente",
+                        description: "Customer data successfully obtained",
                         schema: {
                             $ref: "#/definitions/ClientAllData",
                         },
                     },
                     404: {
                         description:
-                            "El cliente con el ID especificado no existe",
+                            "The client with the specified ID does not exist",
                     },
                     500: {
-                        description: "Error al obtener los datos del cliente",
+                        description: "Error getting customer data",
                     },
                 },
             },
@@ -272,8 +269,8 @@ export const swaggerJson = {
         "/user": {
             get: {
                 tags: ["User"],
-                summary: "Obtener todos los usuarios",
-                description: "Devuelve una lista de todos los usuarios",
+                summary: "get all users",
+                description: "Returns a list of all users",
 
                 parameters: [
                     {
@@ -286,7 +283,7 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Lista de usuarios obtenida exitosamente",
+                        description: "User list fetched successfully",
                         schema: {
                             type: "array",
                             items: {
@@ -295,7 +292,7 @@ export const swaggerJson = {
                         },
                     },
                     500: {
-                        description: "Error al obtener la lista de usuarios",
+                        description: "Error getting user list",
                     },
                 },
             },
@@ -303,8 +300,8 @@ export const swaggerJson = {
         "/user/{id}": {
             get: {
                 tags: ["User"],
-                summary: "Obtener un usuario por ID",
-                description: "Devuelve un usuario específico según su ID",
+                summary: "Get a user by ID",
+                description: "Returns a specific user based on their ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -322,23 +319,23 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Usuario obtenido exitosamente",
+                        description: "User obtained successfully",
                         schema: {
                             $ref: "#/definitions/User",
                         },
                     },
                     404: {
-                        description: "El usuario no existe",
+                        description: "Username does not exist",
                     },
                     500: {
-                        description: "Error al obtener el usuario",
+                        description: "Error getting user",
                     },
                 },
             },
             put: {
                 tags: ["User"],
-                summary: "Actualizar un usuario",
-                description: "Actualiza un usuario según su ID",
+                summary: "update a user",
+                description: "Update a user based on their ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -364,17 +361,17 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Usuario actualizado exitosamente",
+                        description: "User updated successfully",
                     },
                     400: {
-                        description: "Error al actualizar el usuario",
+                        description: "Failed to update user",
                     },
                 },
             },
             delete: {
                 tags: ["User"],
-                summary: "Eliminar un usuario",
-                description: "Elimina un usuario según su ID",
+                summary: "Delete a user",
+                description: "Delete a user based on their ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -392,10 +389,10 @@ export const swaggerJson = {
                 ],
                 responses: {
                     204: {
-                        description: "Usuario eliminado exitosamente",
+                        description: "User deleted successfully",
                     },
                     400: {
-                        description: "Error al eliminar el usuario",
+                        description: "Failed to delete user",
                     },
                 },
             },
@@ -403,9 +400,8 @@ export const swaggerJson = {
         "/register": {
             post: {
                 tags: ["User"],
-                summary: "Crear un nuevo usuario",
-                description:
-                    "Crea un nuevo usuario con los datos proporcionados",
+                summary: "Create a new user",
+                description: "Create a new user with the data provided",
                 parameters: [
                     {
                         name: "body",
@@ -418,10 +414,10 @@ export const swaggerJson = {
                 ],
                 responses: {
                     201: {
-                        description: "Usuario creado exitosamente",
+                        description: "User created successfully",
                     },
                     400: {
-                        description: "Error al crear el usuario",
+                        description: "Error creating user",
                     },
                 },
             },
@@ -429,9 +425,8 @@ export const swaggerJson = {
         "/login": {
             post: {
                 tags: ["User"],
-                summary: "Iniciar sesión de usuario",
-                description:
-                    "Inicia sesión de un usuario con su correo electrónico y contraseña",
+                summary: "login user",
+                description: "Login a user with their email and password",
                 parameters: [
                     {
                         name: "body",
@@ -453,7 +448,7 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Sesión iniciada exitosamente",
+                        description: "Session started successfully",
                         schema: {
                             type: "object",
                             properties: {
@@ -467,13 +462,13 @@ export const swaggerJson = {
                         },
                     },
                     404: {
-                        description: "El usuario no existe",
+                        description: "Username does not exist",
                     },
                     409: {
-                        description: "Contraseña inválida",
+                        description: "Invalid password",
                     },
                     400: {
-                        description: "Error al iniciar sesión",
+                        description: "failed to login",
                     },
                 },
             },
@@ -481,8 +476,8 @@ export const swaggerJson = {
         "/plan": {
             get: {
                 tags: ["Plans"],
-                summary: "Obtener todos los planes",
-                description: "Devuelve una lista de todos los planes",
+                summary: "Get all plans",
+                description: "Returns a list of all plans",
                 parameters: [
                     {
                         name: "authorization",
@@ -494,7 +489,7 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Lista de planes obtenida exitosamente",
+                        description: "List of plans obtained successfully",
                         schema: {
                             type: "array",
                             items: {
@@ -503,14 +498,14 @@ export const swaggerJson = {
                         },
                     },
                     500: {
-                        description: "Error al obtener la lista de planes",
+                        description: "Error getting list of plans",
                     },
                 },
             },
             post: {
                 tags: ["Plans"],
-                summary: "Crear un nuevo plan",
-                description: "Crea un nuevo plan con los datos proporcionados",
+                summary: "Create a new plan",
+                description: "Create a new plan with the data provided",
                 parameters: [
                     {
                         name: "authorization",
@@ -530,10 +525,10 @@ export const swaggerJson = {
                 ],
                 responses: {
                     201: {
-                        description: "Plan creado exitosamente",
+                        description: "Plan created successfully",
                     },
                     401: {
-                        description: "Error al crear el plan",
+                        description: "Failed to create plan",
                     },
                 },
             },
@@ -541,8 +536,8 @@ export const swaggerJson = {
         "/plan/{id}": {
             get: {
                 tags: ["Plans"],
-                summary: "Obtener un plan por ID",
-                description: "Devuelve un plan específico según su ID",
+                summary: "Get a plan by ID",
+                description: "Returns a specific plan based on its ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -560,24 +555,25 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Plan obtenido exitosamente",
+                        description: "plan obtained successfully",
                         schema: {
                             $ref: "#/definitions/Plan",
                         },
                     },
                     404: {
-                        description: "El plan con el ID especificado no existe",
+                        description:
+                            "The plan with the specified ID does not exist",
                     },
                     500: {
-                        description: "Error al obtener el plan",
+                        description: "Failed to get plan",
                     },
                 },
             },
             put: {
                 tags: ["Plans"],
-                summary: "Actualizar un plan por ID",
+                summary: "Upgrade a plan by ID",
                 description:
-                    "Actualiza un plan específico según su ID con los datos proporcionados",
+                    "Upgrade a specific plan based on your ID with the data provided",
                 parameters: [
                     {
                         name: "authorization",
@@ -603,17 +599,17 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Plan actualizado exitosamente",
+                        description: "Plan updated successfully",
                     },
                     401: {
-                        description: "Error al actualizar el plan",
+                        description: "Failed to update plan",
                     },
                 },
             },
             delete: {
                 tags: ["Plans"],
-                summary: "Eliminar un plan por ID",
-                description: "Elimina un plan específico según su ID",
+                summary: "Delete a plan by ID",
+                description: "Delete a specific plan based on its ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -631,10 +627,10 @@ export const swaggerJson = {
                 ],
                 responses: {
                     204: {
-                        description: "Plan eliminado exitosamente",
+                        description: "Plan removed successfully",
                     },
                     401: {
-                        description: "Error al eliminar el plan",
+                        description: "Failed to delete plan",
                     },
                 },
             },
@@ -642,9 +638,9 @@ export const swaggerJson = {
         "/plan/{id}/client": {
             get: {
                 tags: ["Plans"],
-                summary: "Obtener clientes de un plan por ID",
+                summary: "Get customers from a plan by ID",
                 description:
-                    "Devuelve una lista de clientes de un plan específico según su ID",
+                    "Returns a list of customers of a specific plan based on their ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -662,7 +658,7 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Clientes del plan obtenidos exitosamente",
+                        description: "Successfully Obtained Plan Clients",
                         schema: {
                             type: "array",
                             items: {
@@ -671,7 +667,7 @@ export const swaggerJson = {
                         },
                     },
                     404: {
-                        description: "Error al obtener los clientes del plan",
+                        description: "Error getting plan customers",
                     },
                 },
             },
@@ -679,9 +675,8 @@ export const swaggerJson = {
         "/company": {
             get: {
                 tags: ["Company"],
-                summary: "Obtener todas las empresas",
-                description:
-                    "Devuelve una lista de todas las empresas registradas",
+                summary: "Get all companies",
+                description: "Returns a list of all registered companies",
                 parameters: [
                     {
                         name: "authorization",
@@ -693,7 +688,7 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Empresas obtenidas exitosamente",
+                        description: "Successfully obtained companies",
                         schema: {
                             type: "array",
                             items: {
@@ -702,15 +697,14 @@ export const swaggerJson = {
                         },
                     },
                     400: {
-                        description: "Error al obtener las empresas",
+                        description: "Error getting companies",
                     },
                 },
             },
             post: {
                 tags: ["Company"],
-                summary: "Crear una nueva empresa",
-                description:
-                    "Crea una nueva empresa con los datos proporcionados",
+                summary: "Create a new company",
+                description: "Create a new company with the data provided",
                 parameters: [
                     {
                         name: "authorization",
@@ -730,10 +724,10 @@ export const swaggerJson = {
                 ],
                 responses: {
                     201: {
-                        description: "Empresa creada exitosamente",
+                        description: "company created successfully",
                     },
                     401: {
-                        description: "Error al crear la empresa",
+                        description: "Error creating company",
                     },
                 },
             },
@@ -741,8 +735,8 @@ export const swaggerJson = {
         "/company/{id}": {
             get: {
                 tags: ["Company"],
-                summary: "Obtener empresa por ID",
-                description: "Devuelve una empresa específica según su ID",
+                summary: "Get company by ID",
+                description: "Returns a specific company based on its ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -760,25 +754,25 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Empresa obtenida exitosamente",
+                        description: "company successfully obtained",
                         schema: {
                             $ref: "#/definitions/Company",
                         },
                     },
                     404: {
                         description:
-                            "La empresa con el ID especificado no existe",
+                            "The company with the specified ID does not exist",
                     },
                     401: {
-                        description: "Error al obtener la empresa",
+                        description: "Error getting company",
                     },
                 },
             },
             put: {
                 tags: ["Company"],
-                summary: "Actualizar una empresa por ID",
+                summary: "Update a company by ID",
                 description:
-                    "Actualiza una empresa específica según su ID con los datos proporcionados",
+                    "Updates a specific company based on its ID with the data provided",
                 parameters: [
                     {
                         name: "authorization",
@@ -804,17 +798,17 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Empresa actualizada exitosamente",
+                        description: "Company successfully upgraded",
                     },
                     401: {
-                        description: "Error al actualizar la empresa",
+                        description: "Error updating company",
                     },
                 },
             },
             delete: {
                 tags: ["Company"],
-                summary: "Eliminar una empresa por ID",
-                description: "Elimina una empresa específica según su ID",
+                summary: "Delete a company by ID",
+                description: "Delete a specific company based on its ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -832,10 +826,10 @@ export const swaggerJson = {
                 ],
                 responses: {
                     204: {
-                        description: "Empresa eliminada exitosamente",
+                        description: "Company successfully removed",
                     },
                     400: {
-                        description: "Error al eliminar la empresa",
+                        description: "Error deleting company",
                     },
                 },
             },
@@ -843,8 +837,8 @@ export const swaggerJson = {
         "/level": {
             get: {
                 tags: ["Level"],
-                summary: "Obtener todos los niveles",
-                description: "Retorna una lista de todos los niveles",
+                summary: "get all levels",
+                description: "Returns a list of all levels",
                 parameters: [
                     {
                         name: "authorization",
@@ -856,21 +850,21 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Lista de niveles",
+                        description: "Tier List",
                         schema: {
                             type: "array",
                             items: { $ref: "#/definitions/Level" },
                         },
                     },
                     400: {
-                        description: "Error al obtener los niveles",
+                        description: "Error getting levels",
                     },
                 },
             },
             post: {
                 tags: ["Level"],
-                summary: "Crear un nuevo nivel",
-                description: "Crea un nuevo nivel con los datos proporcionados",
+                summary: "Create a new level",
+                description: "Create a new level with the data provided",
                 parameters: [
                     {
                         name: "authorization",
@@ -888,11 +882,11 @@ export const swaggerJson = {
                 ],
                 responses: {
                     201: {
-                        description: "Nivel creado exitosamente",
+                        description: "level created successfully",
                         schema: { $ref: "#/definitions/Level" },
                     },
                     400: {
-                        description: "Error al crear el nivel",
+                        description: "Error creating level",
                     },
                 },
             },
@@ -900,8 +894,8 @@ export const swaggerJson = {
         "/level/{id}": {
             put: {
                 tags: ["Level"],
-                summary: "Actualizar un nivel por ID",
-                description: "Actualiza un nivel específico según su ID",
+                summary: "Update a level by ID",
+                description: "Upgrade a specific level based on its ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -925,18 +919,18 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Nivel actualizado exitosamente",
+                        description: "Level upgraded successfully",
                         schema: { $ref: "#/definitions/Level" },
                     },
                     400: {
-                        description: "Error al actualizar el nivel",
+                        description: "Error updating level",
                     },
                 },
             },
             get: {
                 tags: ["Level"],
-                summary: "Obtener un nivel por ID",
-                description: "Retorna un nivel específico según su ID",
+                summary: "Get a level by ID",
+                description: "Returns a specific level based on its ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -954,18 +948,18 @@ export const swaggerJson = {
                 ],
                 responses: {
                     200: {
-                        description: "Nivel encontrado",
+                        description: "level found",
                         schema: { $ref: "#/definitions/Level" },
                     },
                     404: {
-                        description: "Nivel no encontrado",
+                        description: "level not found",
                     },
                 },
             },
             delete: {
                 tags: ["Level"],
-                summary: "Eliminar un nivel por ID",
-                description: "Elimina un nivel específico según su ID",
+                summary: "Delete a level by ID",
+                description: "Delete a specific level based on its ID",
                 parameters: [
                     {
                         name: "authorization",
@@ -983,10 +977,10 @@ export const swaggerJson = {
                 ],
                 responses: {
                     204: {
-                        description: "Nivel eliminado exitosamente",
+                        description: "level successfully removed",
                     },
                     500: {
-                        description: "Error al eliminar el nivel",
+                        description: "Error deleting level",
                     },
                 },
             },

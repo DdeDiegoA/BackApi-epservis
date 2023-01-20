@@ -13,20 +13,35 @@ import { cacheInit } from "../middlewares/cache.js";
 const router = Router();
 
 router.get(
-    "/company",
-    checkAuth,
-    checkRoleAuth(["admin"]),
-    cacheInit,
-    getCompanies
+    "/company", //? path
+    checkAuth, //? middleware to check if the user is login
+    checkRoleAuth(["admin"]), //? middleware to check if the user fulfills the role
+    cacheInit, //? middleware for manage the cache
+    getCompanies //? the method for the control of the route
 );
-router.post("/company", checkAuth, checkRoleAuth(["admin"]), createCompany);
-router.put("/company/:id", checkAuth, checkRoleAuth(["admin"]), updateCompany);
+router.post(
+    "/company", //? path
+    checkAuth, //? middleware to check if the user is login
+    checkRoleAuth(["admin"]), //? middleware to check if the user fulfills the role
+    createCompany //? the method for the control of the route
+);
+router.put(
+    "/company/:id", //? path
+    checkAuth, //? middleware to check if the user is login
+    checkRoleAuth(["admin"]), //? middleware to check if the user fulfills the role
+    updateCompany //? the method for the control of the route
+);
 router.delete(
-    "/company/:id",
-    checkAuth,
-    checkRoleAuth(["admin"]),
-    deleteCompany
+    "/company/:id", //? path
+    checkAuth, //? middleware to check if the user is login
+    checkRoleAuth(["admin"]), //? middleware to check if the user fulfills the role
+    deleteCompany //? the method for the control of the route
 );
-router.get("/company/:id", checkAuth, checkRoleAuth(["admin"]), getCompanyById);
+router.get(
+    "/company/:id", //? path
+    checkAuth, //? middleware to check if the user is login
+    checkRoleAuth(["admin"]), //? middleware to check if the user fulfills the role
+    getCompanyById //? the method for the control of the route
+);
 
 export default router;

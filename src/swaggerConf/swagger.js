@@ -1,7 +1,12 @@
 import swaggerUi from "swagger-ui-express";
 import { swaggerJson } from "./swagger.json.js";
 
-//* Funcion to setup our docs
+/*
+ * This function is used to serve the swagger documentation for the API
+ * @param app - The express app
+ * @param port - The port number that the server is running on.
+ */
+
 export const swaggerDocs = (app, port) => {
     app.use("/api/routes/docs", swaggerUi.serve, swaggerUi.setup(swaggerJson));
 

@@ -13,6 +13,8 @@ const PORT = process.env.PORT || 4000;
 async function main() {
     try {
         await sequelize.sync({ force: false });
+        /* A function that is importing the swaggerConf/swagger.js file and passing the app and PORT
+        variables to it. */
         V1SwaggerDocs(app, PORT);
         app.listen(PORT);
         console.log("server is listening on port", PORT);

@@ -42,6 +42,13 @@ export const registerUser = async (req, res) => {
     }
 };
 
+/**
+ * It takes the email and password from the request body, finds the user in the database, compares the
+ * password, and returns the user and a token if the password is correct
+ * @param req - The request object.
+ * @param res - The response object.
+ * @returns The user object and the tokenSession.
+ */
 export const loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;

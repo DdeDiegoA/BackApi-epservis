@@ -2,6 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from "../database/database.js";
 import { Client } from "./client.model.js";
 
+/* Creating a table in the database. */
 export const Company = sequelize.define(
     "company",
     {
@@ -24,6 +25,7 @@ export const Company = sequelize.define(
     }
 );
 
+/* Creating a relationship between the two tables. */
 Company.hasMany(Client, {
     foreingKey: "companyId_FK",
     sourceKey: "company_id",

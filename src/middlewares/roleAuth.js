@@ -1,6 +1,11 @@
 import { verifyToken } from "../helpers/handleToken.js";
 import { User } from "../models/user.model.js";
 
+/**
+ * It checks if the user has the role to access the route
+ * @param roles - The roles that are allowed to access the route.
+ * @returns a function that is being called by the route.
+ */
 export const checkRoleAuth = (roles) => async (req, res, next) => {
     try {
         const token = req.headers.authorization.split(" ").pop();

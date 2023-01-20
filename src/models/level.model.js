@@ -2,6 +2,7 @@ import { DataTypes } from "sequelize";
 import sequelize from "../database/database.js";
 import { Plan } from "./plan.model.js";
 
+/* Creating a table in the database. */
 export const Level = sequelize.define(
     "level",
     {
@@ -20,6 +21,7 @@ export const Level = sequelize.define(
     }
 );
 
+/* Creating a relationship between the two tables. */
 Level.hasMany(Plan, {
     foreingKey: "levelId_FK",
     sourceKey: "level_id",

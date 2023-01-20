@@ -8,8 +8,7 @@ import userRoute from "./routes/user.routes.js";
 //* settings
 const app = express();
 
-//* middlewares
-/* A middleware that allows us to parse the body of the request. */
+//* A middleware that allows us to parse the body of the request. */
 app.use(express.json());
 
 //* Importing the routes from the routes folder. */
